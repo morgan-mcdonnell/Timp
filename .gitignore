@@ -1,0 +1,3 @@
+# Temp files to ignore in repository
+.Rhistory
+*.nb.html
