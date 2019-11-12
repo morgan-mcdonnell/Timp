@@ -83,3 +83,23 @@ timp.depth
 ggplot(timp.depth, aes(x=Depth.cm, y=dD))+geom_point() + geom_smooth(method = "lm")
 ggplot(timp.depth, aes(x=Depth.cm, y=d18O))+geom_point() + geom_smooth(method = "lm")
 ```
+
+
+```{r}
+library(lubridate)
+# Load raw BC data
+bc.raw = read_excel(here::here("Data/sp2-raw.xlsx"), skip = 7) 
+bc.data = bc.raw %>% 
+  mutate(Duration.s = (minute(Duration)*60+second(Duration)), Count = `Particle count`) %>% 
+  mutate(cnt.s = Count/Duration.s) %>% select(Sample, cnt.s, Duration.s, Count)
+
+bc.stnd = bc.data %>% filter(str_detect(Sample, "STND")) %>% 
+  mutate(ug.L = c(1, 10, 12, 100, 10, 1, 12), time = c(0,0,0,0,7200,7200,7200), 
+         time.group = as.factor(c(rep('Start',4), rep('End',3))))
+
+ggplot(bc.stnd, aes(x=time, y=cnt.s, color = Sample)) + geom_point() + geom_smooth(method = 'lm')
+ggplot(bc.stnd, aes(x=cnt.s, y=ug.L, color = time.group)) + geom_point() + 
+  geom_smooth(method = 'lm', se = FALSE, fullrange = TRUE)
+
+
+```
