@@ -1,0 +1,68 @@
+"","Sample_ID","Latitude","Longitude","Elev.m","d18O","dD","Description"
+"1","R32","40.38753",-111.64016,3225,-14.3042700864973,-105.496626793882,"snow sample above dirty snow, very loose snow"
+"2","R31","40.38842",-111.64054,3262,-12.3554611519017,-91.9142166049577,"snow sample grey"
+"3","L30","40.38951",-111.63997,3220,-14.0266552721123,-103.801798561119,NA
+"4","R10","40.39257",-111.64038,3142,-14.7600893358336,-108.88415194027,"slush sample below potential rock glaciers on lakes edge"
+"5","L31","40.38898",-111.63933,3226,-14.5459946220501,-109.405282981259,"next to dirty snow"
+"6","R9","40.39259",-111.64066,3150,-13.9872339636832,-104.219358369718,"slush sample. Below potential rock glacier on lakes edge"
+"7","L32","40.38868",-111.63932,3241,-14.638482966092,-108.517306966524,NA
+"8","R8","40.39267",-111.64078,3143,-13.0938660471279,-97.66148162228,"water sample on edge of lake, blue water, water slush mixture @ ice field lake contact. Had to dig through ice to get sample."
+"9","L33","40.38791",-111.63912,3253,-13.4297315033673,-100.950860478844,"gray snow"
+"10","R7","40.39271",-111.64077,3135,-15.9358907905887,-115.20507806671,"lake sample. Very top of lake, standing on ice to take sample"
+"11","L34","40.38750",-111.63936,3261,-14.3206195187419,-105.328799616714,"at the edge of the big rock pile"
+"12","R6","40.39298",-111.64069,3137,-15.9847129003283,-115.763856628632,"lake sample. Top of lake near ice field, deep blue-ish water"
+"13","L20","40.39194",-111.63989,3169,-18.1233646724553,-136.591679901978,"dirty snow"
+"14","R5","40.39354",-111.64025,3137,-16.0924626901634,-116.413569988609,"lake sample. Sample taken from middle of lake by floating ice"
+"15","L21","40.39142",-111.64037,3173,-13.6966765980089,-102.066664738181,"semi-dirty snow"
+"16","R4","40.39359",-111.63999,3130,-15.8824994843237,-115.315087562389,"lake sample. Sample from middle-ish of lake"
+"17","L22","40.39115",-111.64015,3187,-15.2136838716537,-113.970643617155,NA
+"18","R3","40.39367",-111.63934,3121,-15.8792628790969,-115.273550995654,"water sample. Stream where crossing happens"
+"19","L23","40.39079",-111.6398,3171,-14.6748381821537,-111.465633386658,NA
+"20","R2","40.39384",-111.63947,3136,-16.0186696617485,-115.780167600846,"water sample. Stream near dam"
+"21","L24","40.39023",-111.6397,3206,-13.16308656619,-96.9388714368266,"we messed up the way points and had to go back and mark L24"
+"22","R1","40.39389",-111.63934,3135,-15.8848439368006,-115.607094154631,"water sample. Stream sample where stream joins"
+"23","L25","40.39048",-111.64003,3203,-13.7919231190668,-103.127210015874,NA
+"24","R20","40.39142",-111.64181,3184,-14.2463542058123,-106.08443347305,"snow sample above lake, normal snow"
+"25","L26","40.39002",-111.6395,3213,-13.7594170624091,-105.217132375824,NA
+"26","R19","40.39176",-111.6423,3181,-12.2292333204661,-90.4128228198187,"snow sample. Super dirty snow, not too hard; area littered with rocks and pebbles"
+"27","L27","40.38979",-111.63978,3219,-14.7637527810317,-107.390375832782,"a foot deep of fresh snow, hard ice beneath beside some gray ice, ice already mostly melted"
+"28","R18","40.39215",-111.64227,3181,-14.7667040760935,-109.320605807055,"snow sample. Snow is particularly dirty and harder, far right and top from lake"
+"29","L28","40.38994",-111.33979,3218,-12.456233564633,-94.0765548257756,NA
+"30","R17","40.39240",-111.64185,3171,-13.8905698460087,-101.970714056347,"snow sample far right of rg, snow was previously agitated"
+"31","L29","40.39027",-111.63942,3217,-12.1487073168992,-94.4137175242287,NA
+"32","R16","40.39240",-111.64128,3158,-14.5191509687633,-105.609189086205,"snow sample to the right of rg"
+"33","L10","40.39278",-111.63995,3150,-15.0198117069806,-110.471106837188,"about 100ft from last measurement, same distance from lake about"
+"34","R15","40.39246",-111.64072,3156,-13.7897890807628,-101.821645186754,"snow sample about 15 ft below rg"
+"35","L11","40.39256",-111.64005,3129,-12.8979694508141,-94.2758285463731,"100ft from last point, snow a little closer to lake"
+"36","R14","40.39246",-111.64061,3156,-13.5524031854664,-99.7423482986843,"snow sample above and below (on top?) of rg"
+"37","L12","40.39256",-111.63995,3148,-14.2721268671369,-104.340192945098,"bottom of ice sheath; starting zig-zag from leeft to right on left side of ice sheath"
+"38","L13","40.39238",-111.63981,3153,-12.5472275227165,-95.1906669331858,NA
+"39","R13","40.39249",-111.64045,3153,-14.0501618396512,-102.960754318752,"snow sample about 2-5 ft below potential rock glaicer"
+"40","L14","40.39241",-111.64009,3150,-12.7782410926075,-97.0443753325461,NA
+"41","R12","40.39257",-111.64017,3143,-14.1725503307687,-107.017756393519,"snow sample below potential rock glacier (approx 7ft)"
+"42","L15","40.39225",-111.64017,3143,-13.3849586511232,-99.7591048121226,NA
+"43","R11","40.39251",-111.64027,3147,-13.4457604395403,-100.385525851779,"slush sample below potential rock glacier, much thicker snow than previous water/lake edge sample"
+"44","L16","40.39222",-111.63999,3162,-13.6148975538214,-101.975735034994,NA
+"45","L17","40.39202",-111.63979,3186,-17.0387835646235,-128.781067095933,"slope is getting steeper, near a dirty streak of snow going towards the lake"
+"46","R30","40.38900",-111.64094,3259,-11.2310751184506,-83.3949420361609,"snow sample oddly colored grey snow surrounded by lots of debris, very hard snow about rg"
+"47","L18","40.39223",-111.63971,3161,-13.8801338546753,-104.739472228809,"dirty snow"
+"48","R29","40.38920",-111.64099,3246,-13.6096410840203,-102.393344365563,"snow sample taken from above rg snow was greyer than rest, very visable from distance"
+"49","L19","40.39215",-111.6395,3170,-14.7559594005598,-112.162519220584,"by dirty snow"
+"50","R28","40.39032",-111.64098,3244,-14.0709237438839,-104.627325778118,"snow sample taken from center of rg"
+"51","R27","40.38991",-111.64142,3236,-14.3747968787871,-106.625917153314,"snow sample about 1 ft to the right of rg"
+"52","L1","40.39381",-111.63933,3141,-15.9939567724512,-116.327679982548,"base of stream"
+"53","R26","40.39008",-111.64131,3282,-16.5666886109608,-123.840883624637,"snow sample ""pretty dang hard"" snow surrounded by little debris"
+"54","L2","40.39369",-111.63941,3141,-16.0575238129315,-116.69806108593,"10ft above base of stream"
+"55","L3","40.39365",-111.63918,3138,-15.9251334174843,-116.48637586514,"beginning of stream"
+"56","R25","40.39029",-111.64226,3220,-14.4508766681329,-109.993247536013,"snow sample top right near talus pile"
+"57","L4","40.39356",-111.63937,3146,-16.0678332659845,-116.497328007805,"1/4 the way up left lake from base"
+"58","R24","40.39050",-111.64225,3216,-14.2243193485977,-106.776779695536,"snow sample surrounded by lot of debris harder snow."
+"59","L5","40.39354",-111.63947,3176,-16.0490980806929,-116.500193031177,"100ft above last one by another big ice"
+"60","R23","40.39065",-111.64178,3203,-14.5754962876691,-108.416007001569,"snow sample above and to far right of lake"
+"61","L6","40.39323",-111.63953,3146,-16.1049725452395,-116.559843626519,"middle left lake- deep (10ft)"
+"62","R22","40.39098",-111.64172,3201,-16.0489504471016,-118.720865576044,"snow sample above rg, slightly dirty snow"
+"63","L7","40.39301",-111.6397,3135,-15.9474002697477,-116.395463916808,"edge(right by the icefield) of the left lake"
+"64","L8","40.39283",-111.63965,3142,-13.2148939890547,-98.4875561371044,"snow right by the edge of the lake close to where the ice stops"
+"65","R21","40.39117",-111.64151,3182,-16.1606466229839,-119.000505056485,"snow sample about 1/2 way up from lake and to the rock of rg"
+"66","L9","40.39273",-111.63983,3155,-13.8654076814637,-102.323657395171,"a little less than 100 ft fromlast point, about 4 ft from lake"
+"67","R33","40.38744",-111.6394,3270,-14.7445301648048,-109.854250860215,"snow sample very loose snow above rg"

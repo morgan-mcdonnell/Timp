@@ -1,0 +1,67 @@
+---
+title: "Exploring data from Mt. Timp"
+output: html_notebook
+---
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(here)
+library(readxl)
+```
+
+```{r, echo=FALSE}
+# Import isotope data
+iso.data = readRDS(here("Data/iso.data.rds"))
+
+# Get values of known standards
+STNDs = filter(iso.data, str_detect(iso.data$Sample_num, "STND")) %>% group_by(Sample_ID) %>% 
+  summarise(d18O = mean(d18O.correct), dD = mean(dD.correct))
+
+# Extract QC samples and compare value residuals from standards
+QCs = filter(iso.data, str_detect(iso.data$Sample_num, "QC")) %>% 
+  select(Sample_num, Sample_ID, d18O.correct, dD.correct) %>% 
+  mutate(d18O.resid = rep(0, nrow(.)), dD.resid = rep(0, nrow(.)))
+
+for (i in 1:nrow(QCs)) {
+  name.i = QCs$Sample_ID[i]
+  std.i = filter(STNDs, str_detect(STNDs$Sample_ID, name.i))
+  QCs$d18O.resid[i] = QCs$d18O.correct[i] - std.i$d18O
+  QCs$dD.resid[i] = QCs$dD.correct[i] - std.i$dD
+}
+```
+
+
+The isotope run used in this project included three quality control samples. 
+The isotopic residuals from the standards are as follows:
+```{r, echo=FALSE} 
+print(QCs %>% select(-d18O.correct, -dD.correct))
+```
+
+These values are within the assumed tolerances of the Picarro instrument and the IsoReduce software.
+
+```{r}
+# Subset data to only Timp data
+iso.timp = iso.data %>% 
+  filter(str_detect(Sample_num, "STND", negate = TRUE) & str_detect(Sample_num, "QC", negate = TRUE)) %>% 
+  slice(-1:-11) %>% select(Sample_ID, d18O.correct, dD.correct)
+
+# Load and clean sample field notes
+field.notes = read_excel(here("Data/TIMP_Sample_List.xlsx"))
+data.timp = left_join(iso.timp, field.notes, by = c("Sample_ID" = "Sample")) %>% 
+  mutate(Longitude = `Lon Fixed`, Elev.m = `Elev (m)`, d18O = d18O.correct, dD = dD.correct) %>% 
+  select(Sample_ID, Latitude, Longitude, Elev.m, d18O, dD, Description)
+
+# Divide data into spatially distributed set and snowpit data
+timp.space = data.timp %>% filter(str_detect(Sample_ID, "R34", negate = TRUE))
+timp.depth = data.timp %>% filter(str_detect(Sample_ID, "R34")) %>% 
+  mutate(Depth.cm = as.numeric(.$Description %>% str_remove("cm"))) %>% 
+  select(Sample_ID, Latitude, Longitude, Elev.m, Depth.cm, d18O, dD) %>% arrange(Depth.cm)
+
+# Clean workspace variables
+rm(STNDs, QCs, name.i, std.i, iso.data, iso.timp, field.notes)
+```
+
+```{r}
+ggplot(timp.space, aes(x=Longitude, y=Latitude, color = dD)) + geom_point() + scale_color_viridis_c()
+ggplot(timp.space, aes(x=Elev.m, y=dD)) + geom_point() + geom_smooth(method = "lm")
+```
