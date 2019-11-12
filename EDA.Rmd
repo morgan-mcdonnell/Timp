@@ -65,3 +65,21 @@ rm(STNDs, QCs, name.i, std.i, iso.data, iso.timp, field.notes)
 ggplot(timp.space, aes(x=Longitude, y=Latitude, color = dD)) + geom_point() + scale_color_viridis_c()
 ggplot(timp.space, aes(x=Elev.m, y=dD)) + geom_point() + geom_smooth(method = "lm")
 ```
+
+```{r}
+#Create new dataframe with the far away point removed:
+timp.space1<-timp.space[-29,]
+timp.space1
+ggplot(timp.space1, aes(x=Longitude, y=Latitude, color = dD)) + geom_point() + scale_color_viridis_c()
+#write to csv, can be imported into google Earth:
+write.csv(timp.space, 'timp.space.csv')
+
+ggplot(timp.space1, aes(x=Elev.m, y=dD)) + geom_point() + geom_smooth(method = "lm")
+ggplot(timp.space1, aes(x=Elev.m, y=d18O)) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+timp.depth
+ggplot(timp.depth, aes(x=Depth.cm, y=dD))+geom_point() + geom_smooth(method = "lm")
+ggplot(timp.depth, aes(x=Depth.cm, y=d18O))+geom_point() + geom_smooth(method = "lm")
+```
