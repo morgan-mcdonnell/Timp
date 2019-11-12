@@ -11,7 +11,7 @@ library(readxl)
 
 ```{r, echo=FALSE}
 # Import isotope data
-iso.data = readRDS(here("Data/iso.data.rds"))
+iso.data = readRDS(here::here("Data/iso.data.rds"))
 
 # Get values of known standards
 STNDs = filter(iso.data, str_detect(iso.data$Sample_num, "STND")) %>% group_by(Sample_ID) %>% 
@@ -46,16 +46,20 @@ iso.timp = iso.data %>%
   slice(-1:-11) %>% select(Sample_ID, d18O.correct, dD.correct)
 
 # Load and clean sample field notes
-field.notes = read_excel(here("Data/TIMP_Sample_List.xlsx"))
+field.notes = read_excel(here::here("Data/TIMP_Sample_List.xlsx"))
 data.timp = left_join(iso.timp, field.notes, by = c("Sample_ID" = "Sample")) %>% 
   mutate(Longitude = `Lon Fixed`, Elev.m = `Elev (m)`, d18O = d18O.correct, dD = dD.correct) %>% 
   select(Sample_ID, Latitude, Longitude, Elev.m, d18O, dD, Description)
 
+# Calculate deterium excess values
+data.timp = data.timp %>% mutate(d.ex = dD-8*d18O)
+
 # Divide data into spatially distributed set and snowpit data
-timp.space = data.timp %>% filter(str_detect(Sample_ID, "R34", negate = TRUE))
+timp.space = data.timp %>% filter(str_detect(Sample_ID, "R34", negate = TRUE)) %>% 
+  select(-Description, everything())
 timp.depth = data.timp %>% filter(str_detect(Sample_ID, "R34")) %>% 
   mutate(Depth.cm = as.numeric(.$Description %>% str_remove("cm"))) %>% 
-  select(Sample_ID, Latitude, Longitude, Elev.m, Depth.cm, d18O, dD) %>% arrange(Depth.cm)
+  select(Sample_ID, Latitude, Longitude, Elev.m, Depth.cm, d18O, dD, d.ex) %>% arrange(Depth.cm)
 
 # Clean workspace variables
 rm(STNDs, QCs, name.i, std.i, iso.data, iso.timp, field.notes)
@@ -85,7 +89,7 @@ ggplot(timp.depth, aes(x=Depth.cm, y=d18O))+geom_point() + geom_smooth(method = 
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 library(lubridate)
 # Load raw BC data
 bc.raw = read_excel(here::here("Data/sp2-raw.xlsx"), skip = 7) 
@@ -97,9 +101,26 @@ bc.stnd = bc.data %>% filter(str_detect(Sample, "STND")) %>%
   mutate(ug.L = c(1, 10, 12, 100, 10, 1, 12), time = c(0,0,0,0,7200,7200,7200), 
          time.group = as.factor(c(rep('Start',4), rep('End',3))))
 
-ggplot(bc.stnd, aes(x=time, y=cnt.s, color = Sample)) + geom_point() + geom_smooth(method = 'lm')
+ggplot(bc.stnd, aes(x=time, y=cnt.s, color = Sample)) + geom_point() + 
+  geom_smooth(method = 'lm') + ylim(c(0,500))
 ggplot(bc.stnd, aes(x=cnt.s, y=ug.L, color = time.group)) + geom_point() + 
   geom_smooth(method = 'lm', se = FALSE, fullrange = TRUE)
 
+stnd.lm = lm(ug.L~cnt.s, data = bc.stnd)
+print(summary(stnd.lm))
 
+bc.mod = bc.data %>% mutate(ug.L = predict.lm(stnd.lm, newdata = bc.data))
+
+depth.all = timp.depth %>% left_join((bc.mod %>% select(Sample, ug.L) %>% 
+  filter(str_detect(Sample, "DI", negate = TRUE) & str_detect(Sample, "STND", negate = TRUE))), 
+  by = c("Sample_ID" = "Sample"))
 ```
+
+```{r}
+ggplot(depth.all, aes(x=Depth.cm, y=dD)) + geom_point() + geom_line()
+ggplot(depth.all, aes(x=Depth.cm, y=ug.L)) + geom_point() + geom_line()
+ggplot(depth.all, aes(x=Depth.cm, y=d.ex)) + geom_point() + geom_line()
+```
+
+
+
