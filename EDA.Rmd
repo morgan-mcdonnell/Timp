@@ -88,6 +88,12 @@ ggplot(timp.depth, aes(x=Depth.cm, y=dD))+geom_point() + geom_smooth(method = "l
 ggplot(timp.depth, aes(x=Depth.cm, y=d18O))+geom_point() + geom_smooth(method = "lm")
 ```
 
+```{r}
+# plot depth on y axis 
+ggplot(timp.depth, aes(x=dD, y=Depth.cm))+geom_point()+scale_y_reverse()
+
+ggplot(timp.depth, aes(x=d18O, y=Depth.cm))+geom_point()+scale_y_reverse()
+```
 
 ```{r, echo=FALSE}
 library(lubridate)
